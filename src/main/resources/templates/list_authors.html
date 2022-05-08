@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container">
+    <h3>Author LIST</h3>
+    <hr>
+    <a th:href="@{/authors/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+        Add author
+    </a>
+    <form th:action="@{/authors/search}">
+        <div class="form-row align-items-center">
+            <div class="col">
+                <!--<label class="sr-only" for="inlineFormInput">Filter: </label> -->
+                <input type="text" name="keyword" class="form-control mb-10" id="inlineFormInput"
+                       placeholder="ISBN/Book Name/Publishing date/Author" required>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">Search</button>
+                <a th:href="@{/authors/list}" class="btn btn-warning"> Clear</a>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Place of birth</th>
+            <th>Birth date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempAuthor : ${authors}">
+
+            <td th:text="${tempAuthor.id}"></td>
+            <td th:text="${tempAuthor.name}"></td>
+            <td th:text="${tempAuthor.surname}"></td>
+            <td th:text="${tempAuthor.placeOfBirth}"></td>
+            <td th:text="${tempAuthor.birthDate}"></td>
+            <td>
+                <div>
+                    <!-- Add "update" button/link -->
+                    <a th:href="@{/authors/showFormForUpdate(id=${tempAuthor.id})}"
+                       class="btn btn-info btn-sm mb-1">
+                        Update
+                    </a>
+                </div>
+                <!-- Add "delete" button/link -->
+                <div >
+                    <a th:href="@{/authors/delete(id=${tempAuthor.id})}"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script type="text/javascript" th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script >
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+</body>
+</html>

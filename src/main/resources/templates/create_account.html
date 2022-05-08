@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../static/images/icons/favicon.ico" th:href="@{/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css" th:href="@{/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/css/util.css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <!--===============================================================================================-->
+    <style>
+        .wrap-login100 {
+            width: auto !important;
+        }
+        .login100-form {
+            width: auto !important;
+        }
+        .login100-form-btn{
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <link href="../static/css/headers.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+
+            <form class="login100-form validate-form" th:action="@{/users/save}"
+                    th:object="${users}" method="post">
+					<span class="login100-form-title">
+						Create your Account
+					</span>
+
+                <div class="wrap-input100 validate-input" data-validate = "Name is required">
+                    <input class="input100" type="text" name="name" placeholder="Name"
+                           th:field="*{name}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Surname is required">
+                    <input class="input100" type="text" name="surname" placeholder="Surname"
+                           th:field="*{surname}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Birth date is required: dd/mm/yyyy or dd-mm-yyyy or dd.mm.yyyy">
+                    <input class="input100" type="date" name="birth" placeholder="Birth date"
+                           th:field="*{birthDate}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Phone is required: PH3423421">
+                    <input class="input100" type="text" name="passport" placeholder="Passport №"
+                           th:field="*{passportNo}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Phone is required">
+                    <input class="input100" type="text" name="phone" placeholder="Phone"
+                           th:field="*{phone}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" name="email" placeholder="Email"
+                           th:field="*{email}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Name is required">
+                    <input class="input100" type="text" name="role" placeholder="Role"
+                           th:field="*{roleDto.id}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <input class="input100 pass" type="password" name="pass" placeholder="Password"
+                           th:field="*{password}">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Passwords mismatch">
+                    <input class="input100 repass" type="password" name="repass" placeholder="Repeat Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Sing up
+                    </button>
+                </div>
+
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" th:href="@{/users/login}">
+                        <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+                        Back up
+
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script type="text/javascript" th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script >
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

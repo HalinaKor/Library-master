@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Header</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+</head>
+<body>
+  <header th:fragment="header" class="p-3 mb-3 border-bottom container-login101">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="../home_page.html" class="nav-link px-2 link-dark ann" >Books movement</a></li>
+          <li><a th:href="@{/books/list}" class="nav-link px-2 link-dark ann">Books</a></li>
+          <li><a th:href="@{/authors/list}" class="nav-link px-2 link-dark ann">Authors</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark ann">Products</a></li>
+        </ul>
+
+
+
+        <div class="dropdown text-end">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownUser1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img alt="IMG" th:src="@{/images/img-02.png}"  width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownUser1" >
+            <li><a  th:href="@{/users/home_page}" class="dropdown-item" >Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" th:href="@{/users/login}">Sign in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+</body>
+</html>
