@@ -29,9 +29,9 @@ public class UserService {
         return mapper.fromDbo(entity);
 
     }
-
-    public UserDto getUserNameByPassportN(String passportNo){
-        final UserEntity userEntity1 = repository.findUserNameByPassport(passportNo);
+// by me to delete???
+    public UserDto getUserNameByPassportN(UserDto userDto){
+        final UserEntity userEntity1 = repository.findUserNameByPassport(userDto.getPassportNo());
         return mapper.fromDbo(userEntity1);
     }
 }

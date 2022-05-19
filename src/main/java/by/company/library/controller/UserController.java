@@ -1,12 +1,17 @@
 package by.company.library.controller;
 
+import by.company.library.domain.dbo.UserEntity;
 import by.company.library.domain.dto.BookDto;
 import by.company.library.domain.dto.UserDto;
 import by.company.library.service.UserService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
@@ -32,8 +37,6 @@ public class UserController {
 
         model.addAttribute("passportNo", userDto.getPassportNo());
         model.addAttribute("password", userDto.getPassword());
-        // by meee
-       /*userDto = service.getUserNameByPassportN(userDto.getPassportNo());*/
 
         userDto = service.getUserByPassport(userDto.getPassportNo());
         //set user as a model attribute to pre-populate the form
@@ -59,10 +62,14 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(@ModelAttribute UserDto userDto, Model model) {
 
-        userDto = service.getUserByPassport(userDto.getPassportNo());
+       /* userDto = service.getUserByPassport(userDto.getPassportNo());*/
 
         model.addAttribute("users", userDto);
         return "profile";
 
     }
+
+
+
+
 }

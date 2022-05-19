@@ -47,4 +47,8 @@ public class BookMovementEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Fine_Id", referencedColumnName = "ID")
     private FineEntity fine;
+
+
+
+
 }
