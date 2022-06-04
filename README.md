@@ -1,2 +1,2 @@
-# tms-library
+library
 Application for library management
