@@ -32,7 +32,7 @@
 					<img src="../static/images/img-01.png" alt="IMG" th:src="@{/images/img-01.png}">
 				</div>
 
-				<form class="login100-form validate-form " th:action="@{/users/home_page}" th:object="${userDto}" method="post">
+				<form class="login100-form validate-form " th:action="@{/users/login}" th:object="${userDto}" method="post">
 					<span class="login100-form-title">
 						Member Login
 					</span>
@@ -58,6 +58,7 @@
 
 						<button class="login100-form-btn" type="submit" name="login" value="login" id="Login"
 								th:href="@{/users/home_page}">
+
 							Login
 						</button>
 					</div>

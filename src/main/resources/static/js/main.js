@@ -54,8 +54,10 @@
                 return false;
             }
         }
+
+
         else if ($(input).attr('type') == 'pass' || $(input).attr('name') == 'pass') {
-            if ($(input).val().trim().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,30}$/)==null){
+            if ($(input).val().trim().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,100}$/)==null){
                 return false;
             }
         }

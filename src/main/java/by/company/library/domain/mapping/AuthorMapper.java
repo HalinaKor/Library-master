@@ -22,6 +22,12 @@ public class AuthorMapper {
                 .collect(Collectors.toList());
     }
 
+    public List<AuthorEntity> toListDbo(List<AuthorDto> authorDtoList){
+        return authorDtoList.stream()
+                .map(this::toDbo)
+                .collect(Collectors.toList());
+    }
+
     public AuthorDto fromDbo(AuthorEntity authorEntity){
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
         return mapper.map(authorEntity, AuthorDto.class);

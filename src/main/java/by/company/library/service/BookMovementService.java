@@ -7,6 +7,8 @@ import by.company.library.domain.dbo.UserEntity;
 import by.company.library.domain.dto.BookMovementDto;
 import by.company.library.domain.mapping.BookMovementMapper;
 import by.company.library.repository.BookMovementRepository;
+import by.company.library.repository.BookRepository;
+import by.company.library.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,10 +18,15 @@ public class BookMovementService {
 
     private final BookMovementRepository repository;
     private final BookMovementMapper mapper;
+    private final BookRepository bookRepository;
+    private final UserRepository userRepository;
 
-    public BookMovementService(BookMovementRepository repository, BookMovementMapper mapper) {
+    public BookMovementService(BookMovementRepository repository, BookMovementMapper mapper,
+                               BookRepository bookRepository, UserRepository userRepository) {
         this.repository = repository;
         this.mapper = mapper;
+        this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
     }
 
     public List<BookMovementDto> getAll() {

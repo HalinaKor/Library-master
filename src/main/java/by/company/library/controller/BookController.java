@@ -2,11 +2,11 @@ package by.company.library.controller;
 
 import by.company.library.domain.dto.BookDto;
 import by.company.library.service.BookService;
+import by.company.library.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -14,9 +14,11 @@ import java.util.List;
 public class BookController {
 
     private final BookService service;
+    private final UserService userService;
 
-    public BookController(BookService service) {
+    public BookController(BookService service, UserService userService) {
         this.service = service;
+        this.userService = userService;
     }
 
     @GetMapping("/list")
@@ -57,4 +59,5 @@ public class BookController {
     public BookDto getById(String isbn) {
         return service.getById(isbn);
     }
+
 }

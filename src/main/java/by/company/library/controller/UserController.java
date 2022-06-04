@@ -1,23 +1,20 @@
 package by.company.library.controller;
 
-import by.company.library.domain.dbo.UserEntity;
-import by.company.library.domain.dto.BookDto;
 import by.company.library.domain.dto.UserDto;
 import by.company.library.service.UserService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
+
 
     private final UserService service;
 
@@ -31,19 +28,20 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/home_page")
-    public String greetingSubmit(@ModelAttribute UserDto userDto, Model model) {
 
+   @PostMapping("/home_page")
+    public String greetingSubmit(@ModelAttribute UserDto userDto, Model model) {
 
         model.addAttribute("passportNo", userDto.getPassportNo());
         model.addAttribute("password", userDto.getPassword());
-
         userDto = service.getUserByPassport(userDto.getPassportNo());
         //set user as a model attribute to pre-populate the form
         model.addAttribute("users", userDto);
         return "profile";
      /* return "user_page";*/
     }
+
+
 
     @GetMapping("/showFormForAddUser")
     public String showFormForAddUser(Model model){
@@ -59,17 +57,18 @@ public class UserController {
         return "redirect:/users/login";
     }
 
-    @GetMapping("/profile")
-    public String profile(@ModelAttribute UserDto userDto, Model model) {
+    @GetMapping("/home")
+    public String currentUser (HttpServletRequest request,
+                               Authentication authentication, Model model) {
+        if (authentication != null) {
+            UserDto userAuth = (UserDto) authentication.getPrincipal();
+            UserDto user = service.getUserNameByPassportN(userAuth);
 
-       /* userDto = service.getUserByPassport(userDto.getPassportNo());*/
-
-        model.addAttribute("users", userDto);
+            HttpSession session = request.getSession(true);
+            user = (UserDto) session.getAttribute("CurrentUser");
+            model.addAttribute("users", user);
+        }
         return "profile";
-
     }
-
-
-
 
 }

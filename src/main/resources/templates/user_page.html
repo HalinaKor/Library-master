@@ -26,10 +26,28 @@
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
+<!--<div class="container">-->
+<h3>HELLO</h3>
+<hr>
+<hr>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>NAME</th>
+        <th>SURNAME</th>
 
+    </tr>
+    </thead>
 
-<div id="top">
-    Hello @{users/currentUserName}
+    <tbody>
+    <tr th:each="tempUser : ${userDto}">
+
+        <td th:text="${tempUser.name}"></td>
+        <td th:text="${tempUser.surname}"></td>
+    </tr>
+
+    </tbody>
+</table>
 </div>
 
 

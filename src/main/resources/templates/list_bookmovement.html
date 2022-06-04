@@ -43,7 +43,7 @@
         <tbody>
         <tr th:each="tempBook : ${bookMovement}">
 
-            <td th:text="${tempBook.bookDto.isbn}"></td>
+            <td th:object="${tempBook.getBookDto()}"></td>
             <td th:text="${tempBook.quantity}"></td>
             <td th:text="${tempBook.returnedDate}"></td>
             <td th:text="${tempBook.realReturnedDate}"></td>

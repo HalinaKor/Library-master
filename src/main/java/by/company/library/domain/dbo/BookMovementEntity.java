@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +24,9 @@ public class BookMovementEntity {
     @ManyToOne
     @JoinColumn(name = "User_Id", nullable = false)
     private UserEntity user;
+
+
+
 
     @ManyToOne
     @JoinColumn(name = "Book_ISBN", nullable = false)
