@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS user (
     Role_Id int NOT NULL,
     Phone varchar(20),
     Email varchar(100),
-    Password varchar(30),
+    Password varchar(100),
     FOREIGN KEY (Role_Id) REFERENCES role (ID) ON DELETE cascade
 );
 
@@ -93,8 +93,8 @@ insert into user (Passport_No, Name, Surname, Birth_date, Role_Id, Phone, Email,
 values
 #     'Inferno'
 #     'The Divine Comedy'
-('MP2316484', 'Ivan', 'Ivanov', {d '1964-06-22'}, 1, 375291237694, 'abc@mail.ru', '123Cr'),
-('MP6546484','Pavel','Petrov',{d '1999-05-21'}, 2, 375447691242, 'abcd@mail.ru', '987Cr');
+('MP2316484', 'Ivan', 'Ivanov', {d '1964-06-22'}, 1, 375291237694, 'abc@mail.ru', '$2a$12$rURa.s13zlaHpW9oGfDBy.WZd7p8WlS/fPIBvO/V4079vW.9xroBu'),
+('MP6546484','Pavel','Petrov',{d '1999-05-21'}, 2, 375447691242, 'abcd@mail.ru', '$2a$12$14GBE4zHzPtgd63GMvjYmuro4vPoQCP/dUaat1XT8Es30AzUNh/6K');
 
 insert into fine (ID, Amount, Paid)
 values

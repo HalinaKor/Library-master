@@ -2,6 +2,7 @@ package by.company.library.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -37,10 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
+// количе-о экзмепляров, сколько осталось, взять книгу, пользователю оставить комментарий о книге от пользователя,
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/users/login", "/users/showFormForAddUser").permitAll()
+                .antMatchers(HttpMethod.POST, "/users/login", "/users/showFormForAddUser", "/users/save")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/users/login")
@@ -49,6 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successForwardUrl("/users/home_page")
                 .permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
     }
 }
