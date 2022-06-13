@@ -1,5 +1,6 @@
 package by.company.library.service;
 
+import by.company.library.configuration.MyUserDetails;
 import by.company.library.domain.dbo.UserEntity;
 import by.company.library.domain.dto.UserDto;
 import by.company.library.domain.mapping.UserMapper;
@@ -33,5 +34,10 @@ public class UserService {
     public UserDto getUserNameByPassportN(UserDto userDto){
         final UserEntity userEntity1 = repository.findUserNameByPassport(userDto.getPassportNo());
         return mapper.fromDbo(userEntity1);
+    }
+
+    public UserEntity getCurrentUser(MyUserDetails myUserDetails){
+        final UserEntity userEntity1 = repository.findByPassportNo(myUserDetails.getPassportNo());
+        return userEntity1;
     }
 }

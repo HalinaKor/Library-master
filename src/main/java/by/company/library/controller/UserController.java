@@ -1,5 +1,7 @@
 package by.company.library.controller;
 
+import by.company.library.configuration.MyUserDetails;
+import by.company.library.domain.dbo.UserEntity;
 import by.company.library.domain.dto.UserDto;
 import by.company.library.service.UserService;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -61,11 +63,10 @@ public class UserController {
     public String currentUser (HttpServletRequest request,
                                Authentication authentication, Model model) {
         if (authentication != null) {
-            UserDto userAuth = (UserDto) authentication.getPrincipal();
-            UserDto user = service.getUserNameByPassportN(userAuth);
+            MyUserDetails userAuth = (MyUserDetails) authentication.getPrincipal();
+            UserEntity user = service.getCurrentUser(userAuth);
 
             HttpSession session = request.getSession(true);
-            user = (UserDto) session.getAttribute("CurrentUser");
             model.addAttribute("users", user);
         }
         return "profile";

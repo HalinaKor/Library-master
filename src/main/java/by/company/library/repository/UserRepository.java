@@ -1,5 +1,6 @@
 package by.company.library.repository;
 
+import by.company.library.configuration.MyUserDetails;
 import by.company.library.domain.dbo.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public interface UserRepository extends PagingAndSortingRepository<UserEntity, String> {
 
     UserEntity findByPassportNo(String passportNo);
+
+
 
 
     Optional<UserEntity> findByNameContaining(String name);

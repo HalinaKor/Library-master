@@ -1,5 +1,6 @@
 package by.company.library.domain.mapping;
 
+import by.company.library.configuration.MyUserDetails;
 import by.company.library.domain.dbo.UserEntity;
 import by.company.library.domain.dto.UserDto;
 import lombok.RequiredArgsConstructor;
@@ -31,4 +32,5 @@ public class UserMapper {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
         return mapper.map(userDto, UserEntity.class);
     }
+
 }
