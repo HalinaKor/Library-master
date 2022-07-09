@@ -30,6 +30,12 @@ public class BookEntity {
 
     private boolean inStock;
 
+    @Column(name = "book_comment")
+    private String bookComment;
+
+    @Column
+    private String description;
+
     @OneToMany(mappedBy = "book")
     private Set<BookMovementEntity> booksMovement;
 
